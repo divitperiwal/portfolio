@@ -1,6 +1,7 @@
 "use client";
 
 import * as motion from "motion/react-client";
+import Image from "next/image";
 
 function generateContributionGrid(): number[][] {
   const rows = 7;
@@ -41,12 +42,7 @@ const CAPABILITIES = [
   "Keeping code understandable over time",
 ];
 
-const CURRENTLY_LEARNING = [
-  "GO LANG",
-  "SYSTEM DESIGN",
-  "DOCKER & K8S",
-  "AWS",
-];
+const CURRENTLY_LEARNING = ["GO LANG", "SYSTEM DESIGN", "DOCKER & K8S", "AWS"];
 
 const STATS = [
   { value: "10+", label: "Projects" },
@@ -56,8 +52,17 @@ const STATS = [
 ];
 
 const TECH_ITEMS = [
-  "TypeScript", "Node.js", "Next.js", "PostgreSQL", "Redis",
-  "Drizzle", "Docker", "Linux", "Nginx", "Git", "Scheduled Jobs",
+  "TypeScript",
+  "Node.js",
+  "Next.js",
+  "PostgreSQL",
+  "Redis",
+  "Drizzle",
+  "Docker",
+  "Linux",
+  "Nginx",
+  "Git",
+  "Scheduled Jobs",
 ];
 
 /* ── Shared animation presets ── */
@@ -139,8 +144,18 @@ export default function HeroSection() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 border border-[#1a1a1a] px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.15em] text-[#1a1a1a] transition-colors hover:bg-[#1a1a1a] hover:text-white"
               >
-                <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                <svg
+                  className="h-3 w-3"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                  />
                 </svg>
                 Resume
               </a>
@@ -153,7 +168,8 @@ export default function HeroSection() {
               transition={{ duration: 0.6, delay: 0.55 }}
               className="mt-8 sm:mt-14 max-w-[420px] font-serif text-[22px] sm:text-[28px] leading-[1.3] italic text-[#444]"
             >
-              Engineering decisions matter more than technologies. Good architecture outlives every framework.
+              Engineering decisions matter more than technologies. Good
+              architecture outlives every framework.
             </motion.p>
 
             <motion.div
@@ -169,17 +185,20 @@ export default function HeroSection() {
                 </h3>
                 {/* Subtle avatar — grayscale → color on hover */}
                 <div className="group/avatar relative">
-                  <img
+                  <Image
                     src="/avatar.jpeg"
                     alt="Divit Periwal"
+                    width={32}
+                    height={32}
                     className="h-8 w-8 rounded-full border border-[#ddd] object-cover grayscale opacity-60 transition-all duration-300 group-hover/avatar:grayscale-0 group-hover/avatar:opacity-100 group-hover/avatar:scale-110 group-hover/avatar:shadow-md"
                   />
                 </div>
               </div>
               <p className="mt-3 font-sans text-[13px] leading-[1.8] text-[#666]">
                 CS undergraduate at SRM University with a strong interest in
-                backend systems, web development, and writing clean, maintainable
-                code. I like building side projects that solve real problems.
+                backend systems, web development, and writing clean,
+                maintainable code. I like building side projects that solve real
+                problems.
               </p>
             </motion.div>
           </div>
@@ -223,7 +242,8 @@ export default function HeroSection() {
                 Problems I Solve
               </h4>
               <p className="mt-1.5 text-[13px] leading-relaxed text-[#333]">
-                Concurrency · Caching · Bottlenecks · Abstractions · Reliability · API design · Optimization
+                Concurrency · Caching · Bottlenecks · Abstractions · Reliability
+                · API design · Optimization
               </p>
             </motion.div>
 
