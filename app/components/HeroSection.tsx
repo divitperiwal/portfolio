@@ -3,32 +3,11 @@
 import * as motion from "motion/react-client";
 import Image from "next/image";
 
-function generateContributionGrid(): number[][] {
-  const rows = 7;
-  const cols = 52;
-  const grid: number[][] = [];
-  let seed = 42;
-  const rand = () => {
-    seed = (seed * 16807 + 13) % 2147483647;
-    return seed / 2147483647;
-  };
-
-  for (let r = 0; r < rows; r++) {
-    grid[r] = [];
-    for (let c = 0; c < cols; c++) {
-      const v = rand();
-      const wave = Math.sin(c / 6) * 0.25 + 0.55;
-      const weekendDip = r === 0 || r === 6 ? 0.75 : 1;
-      const val = v * wave * weekendDip;
-
-      if (val < 0.12) grid[r][c] = 0;
-      else if (val < 0.28) grid[r][c] = 1;
-      else if (val < 0.42) grid[r][c] = 2;
-      else if (val < 0.55) grid[r][c] = 3;
-      else grid[r][c] = 4;
-    }
-  }
-  return grid;
+interface HeroSectionProps {
+  contributionGrid: number[][];
+  totalContributions: string;
+  totalCommits: string;
+  lastContribution: string;
 }
 
 const COLORS = ["#ebedf0", "#c6c6c6", "#8c8c8c", "#505050", "#1a1a1a"];
@@ -42,12 +21,12 @@ const CAPABILITIES = [
   "Keeping code understandable over time",
 ];
 
-const CURRENTLY_LEARNING = ["GO LANG", "SYSTEM DESIGN", "DOCKER & K8S", "AWS"];
+const CURRENTLY_LEARNING = ["GO LANG", "SYSTEM DESIGN", "K8S", "WEBSOCKETS"];
 
-const STATS = [
+const STATIC_STATS = [
   { value: "10+", label: "Projects" },
   { value: "3+", label: "Years" },
-  { value: "1.2k", label: "Commits" },
+  { value: null, label: "Commits" },
   { value: "8+", label: "Tech Used" },
 ];
 
@@ -86,8 +65,13 @@ const lineExpand = {
   visible: { scaleX: 1 },
 };
 
-export default function HeroSection() {
-  const grid = generateContributionGrid();
+export default function HeroSection({
+  contributionGrid,
+  totalContributions,
+  totalCommits,
+  lastContribution,
+}: HeroSectionProps) {
+  const grid = contributionGrid;
 
   return (
     <section className="relative z-0 bg-linear-to-br from-[#fafafa] via-[#f5f5f5] to-[#fafafa] text-[#1a1a1a]">
@@ -359,7 +343,7 @@ export default function HeroSection() {
                   TOTAL CONTRIBUTIONS
                 </p>
                 <p className="mt-1 font-mono text-[36px] font-bold leading-none text-[#1a1a1a]">
-                  1,247
+                  {totalContributions}
                 </p>
               </div>
               <div>
@@ -367,7 +351,7 @@ export default function HeroSection() {
                   LAST CONTRIBUTION
                 </p>
                 <p className="mt-1 font-mono text-[36px] font-bold leading-none text-[#e53e3e]">
-                  TODAY
+                  {lastContribution}
                 </p>
               </div>
             </motion.div>
@@ -386,7 +370,7 @@ export default function HeroSection() {
                 TOTAL CONTRIBUTIONS
               </p>
               <p className="mt-1 font-mono text-[24px] font-bold leading-none text-[#1a1a1a]">
-                1,247
+                {totalContributions}
               </p>
             </div>
             <div>
@@ -394,7 +378,7 @@ export default function HeroSection() {
                 LAST CONTRIBUTION
               </p>
               <p className="mt-1 font-mono text-[24px] font-bold leading-none text-[#e53e3e]">
-                TODAY
+                {lastContribution}
               </p>
             </div>
           </motion.div>
@@ -426,7 +410,7 @@ export default function HeroSection() {
           <div className="mt-5 border border-[#e0e0e0]">
             {/* Stat Numbers Row */}
             <div className="grid grid-cols-4 divide-x divide-[#e0e0e0]">
-              {STATS.map((stat, i) => (
+              {STATIC_STATS.map((stat, i) => (
                 <motion.div
                   key={stat.label}
                   initial={{ opacity: 0, y: 8 }}
@@ -436,7 +420,7 @@ export default function HeroSection() {
                   className="px-2 py-3 sm:px-4 sm:py-4 text-center"
                 >
                   <p className="font-mono text-[20px] sm:text-[28px] font-bold leading-none text-[#1a1a1a]">
-                    {stat.value}
+                    {stat.value ?? totalCommits}
                   </p>
                   <p className="mt-1.5 font-mono text-[8px] sm:text-[10px] uppercase tracking-[0.12em] text-[#999]">
                     {stat.label}

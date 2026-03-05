@@ -3,6 +3,12 @@ import ProjectSection from "./components/ProjectSection";
 import ExperienceSection from "./components/ExperienceSection";
 import ContactSection from "./components/ContactSection";
 import PageWrapper from "./components/PageWrapper";
+import {
+  fetchGitHubContributions,
+  formatLastContribution,
+  formatContributions,
+  formatCommits,
+} from "./lib/github";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -33,7 +39,16 @@ const jsonLd = {
   ],
 };
 
-export default function Home() {
+export default async function Home() {
+  const contributions = await fetchGitHubContributions();
+  const lastContribution = formatLastContribution(
+    contributions.lastContributionDate
+  );
+  const totalContributions = formatContributions(
+    contributions.totalContributions
+  );
+  const totalCommits = formatCommits(contributions.totalCommits);
+
   return (
     <>
       <script
@@ -41,7 +56,12 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <PageWrapper>
-        <HeroSection />
+        <HeroSection
+          contributionGrid={contributions.grid}
+          totalContributions={totalContributions}
+          totalCommits={totalCommits}
+          lastContribution={lastContribution}
+        />
         <ProjectSection />
         <ExperienceSection />
         <ContactSection />
