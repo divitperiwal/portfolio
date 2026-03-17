@@ -72,11 +72,11 @@ const PROJECTS: Project[] = [
     year: "2025",
     role: "SOLO DEV",
     category: "WEB3 APPLICATION",
-    name: "ETHERGRID",
+    name: "NOTED",
     subtitle: "On-Chain Transaction Messaging App",
     tech: ["Next.js", "Ethers.js", "Solidity", "Zustand", "Tailwind"],
-    github: "https://github.com/divitperiwal/ethergrid",
-    live: "https://ethergrid.divitperiwal.dev",
+    github: "https://github.com/divitperiwal/noted",
+    live: "https://noted.divitperiwal.dev",
     description:
       "A web application where users attach keywords and messages to Ethereum transactions. Data is stored on-chain and used to generate contextual GIF-based transaction receipts, turning transfers into verifiable and expressive records.",
     problems: [
@@ -118,8 +118,8 @@ const PROJECTS: Project[] = [
     name: "SECOND ROUND",
     subtitle: "AI Interview Simulator",
     tech: ["Next.js", "Tailwind CSS", "Vapi", "LLM APIs"],
-    github: "https://github.com/divitperiwal/interview-prep",
-    live: "https://interview-prep.divitperiwal.dev",
+    github: "https://github.com/divitperiwal/secondround",
+    live: "https://secondround.divitperiwal.dev",
     description:
       "A web application that conducts spoken technical interviews and evaluates responses, simulating a real interviewer instead of a static question generator.",
     problems: [
