@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Lora } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import CustomCursor from "./components/CustomCursor";
 import HamsterPet from "./components/HamsterPet";
 import "./globals.css";
@@ -96,6 +97,7 @@ export default function RootLayout({
         <CustomCursor />
         <HamsterPet />
         {children}
+        <Analytics />
       </body>
     </html>
   );
