@@ -123,7 +123,7 @@ export default function HeroSection({
                 SOFTWARE DEVELOPER
               </span>
               <a
-                href="/resume.pdf"
+                href="https://drive.google.com/file/d/15VzAwt7YjXu40NSzR-So5ggSLYVIOHvW/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 border border-[#1a1a1a] px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.15em] text-[#1a1a1a] transition-colors hover:bg-[#1a1a1a] hover:text-white"

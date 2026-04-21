@@ -167,7 +167,7 @@ export default function ContactSection() {
               </motion.p>
 
               <motion.a
-                href="/resume.pdf"
+                href="https://drive.google.com/file/d/15VzAwt7YjXu40NSzR-So5ggSLYVIOHvW/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 variants={fadeUp}
